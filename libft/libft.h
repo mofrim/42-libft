@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 13:53:29 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/17 11:04:09 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/05 20:41:58 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+int		ft_printf(const char *f, ...);
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

@@ -6,61 +6,78 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/06 13:53:42 by fmaurer           #+#    #+#              #
-#    Updated: 2024/07/20 20:28:28 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/08/05 20:34:30 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRCS =  ft_isalpha.c \
-				ft_isdigit.c \
-				ft_isalnum.c \
-				ft_isascii.c \
-				ft_isprint.c \
-				ft_strlen.c \
-				ft_memset.c \
-				ft_bzero.c \
-				ft_memcpy.c \
-				ft_memmove.c \
-				ft_strlcpy.c \
-				ft_strlcat.c \
-				ft_toupper.c \
-				ft_tolower.c \
-				ft_strchr.c \
-				ft_strrchr.c \
-				ft_strncmp.c \
-				ft_memchr.c \
-				ft_memcmp.c \
-				ft_strnstr.c \
-				ft_atoi.c \
-				ft_calloc.c \
-				ft_strdup.c \
-				ft_substr.c \
-				ft_strjoin.c \
-				ft_strtrim.c \
-				ft_split.c \
-				ft_itoa.c \
-				ft_strmapi.c \
-				ft_striteri.c \
-				ft_putchar_fd.c \
-				ft_putstr_fd.c \
-				ft_putendl_fd.c \
-				ft_putnbr_fd.c
+SRCS_LIBFT =  ft_isalpha.c \
+							ft_isdigit.c \
+							ft_isalnum.c \
+							ft_isascii.c \
+							ft_isprint.c \
+							ft_strlen.c \
+							ft_memset.c \
+							ft_bzero.c \
+							ft_memcpy.c \
+							ft_memmove.c \
+							ft_strlcpy.c \
+							ft_strlcat.c \
+							ft_toupper.c \
+							ft_tolower.c \
+							ft_strchr.c \
+							ft_strrchr.c \
+							ft_strncmp.c \
+							ft_memchr.c \
+							ft_memcmp.c \
+							ft_strnstr.c \
+							ft_atoi.c \
+							ft_calloc.c \
+							ft_strdup.c \
+							ft_substr.c \
+							ft_strjoin.c \
+							ft_strtrim.c \
+							ft_split.c \
+							ft_itoa.c \
+							ft_strmapi.c \
+							ft_striteri.c \
+							ft_putchar_fd.c \
+							ft_putstr_fd.c \
+							ft_putendl_fd.c \
+							ft_putnbr_fd.c \
+							ft_lstnew.c \
+							ft_lstadd_front.c \
+							ft_lstsize.c \
+							ft_lstlast.c \
+							ft_lstadd_back.c \
+							ft_lstclear.c \
+							ft_lstdelone.c \
+							ft_lstiter.c \
+							ft_lstmap.c
 
-BONUS_SRCS = ft_lstnew.c \
-						 ft_lstadd_front.c \
-						 ft_lstsize.c \
-						 ft_lstlast.c \
-						 ft_lstadd_back.c \
-						 ft_lstclear.c \
-						 ft_lstdelone.c \
-						 ft_lstiter.c \
-						 ft_lstmap.c \
-						 $(SRCS)
+SRCS_FTPR	=	ft_printf/ft_printf.c \
+						ft_printf/smpl_utils.c \
+						ft_printf/smpl_utoa.c \
+						ft_printf/smpl_convert_cdsi.c \
+						ft_printf/smpl_convert_p.c \
+						ft_printf/smpl_convert_x.c \
+						ft_printf/smpl_convert.c \
+						ft_printf/compl_parse_bonus.c \
+						ft_printf/compl_convert_bonus.c \
+						ft_printf/compl_utils_bonus.c \
+						ft_printf/compl_is_conv_bonus.c \
+						ft_printf/compl_flag_utils_bonus.c \
+						ft_printf/compl_do_conv_bonus.c \
+						ft_printf/compl_convert_d_bonus.c \
+						ft_printf/compl_convert_u_bonus.c \
+						ft_printf/compl_convert_c_bonus.c \
+						ft_printf/compl_convert_s_bonus.c \
+						ft_printf/compl_convert_p_bonus.c \
+						ft_printf/compl_convert_x_bonus.c
 
 OBJS_DIR = objs
-OBJS	= $(patsubst %.c,$(OBJS_DIR)/%.o,$(SRCS))
-OBJS_BONUS = $(patsubst %.c,$(OBJS_DIR)/%.o,$(BONUS_SRCS))
+OBJS	= $(patsubst %.c,$(OBJS_DIR)/%.o,$(SRCS_LIBFT)) $(patsubst ft_printf/%.c,$(OBJS_DIR)/%.o,$(SRCS_FTPR))
 CC = cc
 CC_FLAGS = -Wall -Wextra -Werror
 
@@ -71,6 +88,9 @@ CC_FLAGS = -Wall -Wextra -Werror
 PIC	=	-fPIC
 
 INC = -I ./
+
+bla:
+	@echo $(OBJS)
 
 all: $(NAME)
 
@@ -83,6 +103,11 @@ $(OBJS_DIR)/%.o : %.c libft.h
 	@echo "Compiling: $<"
 	@$(CC) $(CC_FLAGS) $(PIC) $(INC) -c $< -o $@
 
+$(OBJS_DIR)/%.o : ft_printf/%.c libft.h
+	@mkdir -p $(OBJS_DIR)
+	@echo "Compiling: $<"
+	@$(CC) $(CC_FLAGS) $(PIC) $(INC) -c $< -o $@
+
 clean:
 	rm -rf $(OBJS_DIR)
 
@@ -90,9 +115,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-bonus: $(OBJS_BONUS)
-	@echo "Bonus Compiling: $^"
-	@ar -rcs $(NAME) $(OBJS_BONUS)
 
 .PHONY: clean fclean re all

@@ -6,24 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:52:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/05 19:35:57 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/05 20:38:51 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-/* Take this if we are not doing the bonus part. */
-#ifndef BONUS
-
-/* Wrapper func for smpl_isconv. Only there for code seperation. */
-int	ftpr_is_conversion(const char *s)
-{
-	if (ftpr_smpl_isconv(s))
-		return (1);
-	return (0);
-}
-
-#endif
 
 /* Is current conv string a smpl conv? */
 int	ftpr_smpl_isconv(const char *s)
