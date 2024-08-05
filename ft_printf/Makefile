@@ -6,11 +6,11 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/08/05 19:05:59 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/08/05 19:45:55 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	libft.a
+NAME	=	libftprintf.a
 
 CC			= cc
 
@@ -32,7 +32,6 @@ SRCS_IN	= ./ft_printf.c \
 					./smpl_convert.c
 
 BONUS_SRCS_IN = ./compl_parse_bonus.c \
-								./compl_check_fmt_bonus.c \
 								./compl_convert_bonus.c \
 								./compl_utils_bonus.c \
 								./compl_is_conv_bonus.c \
@@ -49,7 +48,6 @@ BONUS_SRCS_IN = ./compl_parse_bonus.c \
 # removes leading './' again
 SRCS = $(patsubst ./%,%,$(SRCS_IN)) $(patsubst ./%,%,$(BONUS_SRCS_IN))
 
-BONUS_HDR = ft_printf_bonus.h
 HDR	= ft_printf.h
 
 OBJ_DIR		= obj
@@ -64,10 +62,10 @@ LIBFT				= $(LIBFT_PATH)/libft.a
 # another cool thing is also happening here: the $< inside the recipe is only
 # taking all the files from $(SRCS) which is the first prequisite. $(HDR) is
 # only a dependency. this is why noone is trying to compile ft_printf.h
-$(OBJ_DIR)/%.o: %.c $(HDR) $(BONUS_HDR) | $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(PIC) -c $< -o $@
-
 all: $(NAME)
+
+$(OBJ_DIR)/%.o: %.c $(HDR) | $(OBJ_DIR)
+	$(CC) $(CFLAGS) $(PIC) -c $< -o $@
 
 $(NAME): $(OBJS)
 	make -C $(LIBFT_PATH) all
@@ -79,8 +77,6 @@ $(LIBFT):
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
-
-bonus: all
 
 clean:
 	make -C $(LIBFT_PATH) clean
