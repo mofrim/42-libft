@@ -6,9 +6,13 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/06 13:53:42 by fmaurer           #+#    #+#              #
-#    Updated: 2024/08/06 06:42:32 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/08/06 19:28:19 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# This is my LibFT Makefile. By now it also includes my ft_printf, which is
+# certainly not production ready code. Also in libft i would like to do some
+# more improvements towards clean code.
 
 NAME = libft.a
 
@@ -89,7 +93,7 @@ PIC	=	-fPIC
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo "Archiving: $^"
+	@echo -e "\nArchiving:\n($^) --> libft.a\n"
 	@ar -rcs $(NAME) $(OBJS)
 
 $(OBJS_DIR)/%.o : %.c libft.h
