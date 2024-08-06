@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:43:28 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/05 19:40:28 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/08/05 20:46:22 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,33 @@ int	ftpr_check_fmt(const char *fmt)
 		fmt++;
 	}
 	return (1);
+}
+
+/* Parse args while scanning fmtstring. Returns number of printed chars. */
+int	ftpr_parse_args(va_list args, const char *fmt)
+{
+	int	c;
+	int	output;
+
+	output = 0;
+	while (*fmt)
+	{
+		c = ftpr_is_conversion(fmt);
+		if (c == 1)
+			fmt += ftpr_smpl_convert(args, fmt, &output);
+		else if (c == -1)
+		{
+			c = ftpr_gather_flags_and_conv(args, fmt, &output);
+			if (c < 0)
+				return (-1);
+			fmt += c;
+		}
+		else
+		{
+			ft_putchar(*fmt);
+			output++;
+			fmt++;
+		}
+	}
+	return (output);
 }

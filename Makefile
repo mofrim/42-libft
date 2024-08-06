@@ -6,15 +6,14 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/08/05 20:08:25 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/08/06 06:45:08 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	libft.a
+NAME	=	test
 
 CC			= cc
 
-## for unit test to work:
 CFLAGS	= -Wall -Wextra -Werror
 
 # we are building a library which might even end up being a shared lib. so
@@ -26,23 +25,20 @@ PIC	=	-fPIC
 LIBFT_PATH	= ./libft
 LIBFT				= $(LIBFT_PATH)/libft.a
 
-LIB_FTPRINTF_PATH	= ./ft_printf
-LIB_FTPRINTF			= $(LIB_FTPRINTF_PATH)/libftprintf.a
+SRC = test.c
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRC)
 	make -C $(LIBFT_PATH) all
-	make -C $(LIB_FTPRINTF_PATH) all
-	mv $(LIBFT) $(NAME)
-	ar -rcs $(NAME) $(LIB_FTPRINTF)
+	cc -o $(NAME) $< $(LIBFT)
 
-clean:
-	make -C $(LIBFT_PATH) clean
-	make -C $(LIB_FTPRINTF_PATH) clean
+clean: fclean
 
-fclean: clean
-	rm -f $(NAME)
+fclean:
+	@make -s -C $(LIBFT_PATH) fclean
+	@echo "Removing $(NAME) binary..."
+	@rm -f $(NAME)
 
 re: fclean all
 

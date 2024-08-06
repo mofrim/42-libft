@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/06 13:53:42 by fmaurer           #+#    #+#              #
-#    Updated: 2024/08/05 20:34:30 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/08/06 06:42:32 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,6 @@ SRCS_FTPR	=	ft_printf/ft_printf.c \
 						ft_printf/smpl_convert_p.c \
 						ft_printf/smpl_convert_x.c \
 						ft_printf/smpl_convert.c \
-						ft_printf/compl_parse_bonus.c \
 						ft_printf/compl_convert_bonus.c \
 						ft_printf/compl_utils_bonus.c \
 						ft_printf/compl_is_conv_bonus.c \
@@ -87,31 +86,28 @@ CC_FLAGS = -Wall -Wextra -Werror
 # https://stackoverflow.com/questions/5311515/gcc-fpic-option
 PIC	=	-fPIC
 
-INC = -I ./
-
-bla:
-	@echo $(OBJS)
-
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo "Compiling: $^"
+	@echo "Archiving: $^"
 	@ar -rcs $(NAME) $(OBJS)
 
 $(OBJS_DIR)/%.o : %.c libft.h
 	@mkdir -p $(OBJS_DIR)
 	@echo "Compiling: $<"
-	@$(CC) $(CC_FLAGS) $(PIC) $(INC) -c $< -o $@
+	@$(CC) $(CC_FLAGS) $(PIC) -c $< -o $@
 
 $(OBJS_DIR)/%.o : ft_printf/%.c libft.h
 	@mkdir -p $(OBJS_DIR)
 	@echo "Compiling: $<"
-	@$(CC) $(CC_FLAGS) $(PIC) $(INC) -c $< -o $@
+	@$(CC) $(CC_FLAGS) $(PIC) -c $< -o $@
 
 clean:
+	@echo "Removing objs..."
 	rm -rf $(OBJS_DIR)
 
 fclean: clean
+	@echo "Removing $(NAME)..."
 	rm -f $(NAME)
 
 re: fclean all
