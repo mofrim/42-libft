@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:05:35 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/13 16:28:21 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/09/09 17:12:48 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 // 		string, which is the result of the concatenation
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*joi;
-	char	*bak;
+	char	*jstr;
+	char	*jstr_bak;
 
 	if (!s1 && !s2)
 		return (NULL);
@@ -34,14 +34,14 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (ft_strdup(s2));
 	if (s1 && !s2)
 		return (ft_strdup(s1));
-	joi = (char *)malloc((ft_strlen(s1) + ft_strlen(s2)) * sizeof (char) + 1);
-	bak = joi;
-	if (!joi)
+	jstr = (char *)malloc((ft_strlen(s1) + ft_strlen(s2)) * sizeof(char) + 1);
+	jstr_bak = jstr;
+	if (!jstr)
 		return (NULL);
 	while (*s1)
-		*joi++ = *s1++;
+		*jstr++ = *s1++;
 	while (*s2)
-		*joi++ = *s2++;
-	*joi = '\0';
-	return (bak);
+		*jstr++ = *s2++;
+	*jstr = '\0';
+	return (jstr_bak);
 }

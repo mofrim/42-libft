@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 13:48:15 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/14 15:06:53 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/09/09 17:11:57 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@
 //
 // ERRORS
 //    ENOMEM Insufficient memory available to allocate duplicate string.
-char	*ft_strdup(const char *s)
+char	*ft_strdup(const char *str)
 {
-	char	*c;
+	char	*dupl;
 	int		i;
 
-	c = (char *)malloc(ft_strlen(s) * sizeof (char) + 1);
-	if (!c || !s)
+	dupl = (char *)malloc((ft_strlen(str) + 1) * sizeof(char));
+	if (!dupl || !str)
 		return (NULL);
 	i = -1;
-	while (s[++i])
-		c[i] = s[i];
-	c[i] = '\0';
-	return (c);
+	while (str[++i])
+		dupl[i] = str[i];
+	dupl[i] = '\0';
+	return (dupl);
 }

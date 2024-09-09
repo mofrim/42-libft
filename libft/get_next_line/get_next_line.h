@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 11:22:09 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/09/09 17:13:58 by fmaurer          ###   ########.fr       */
+/*   Created: 2024/08/02 10:39:24 by fmaurer           #+#    #+#             */
+/*   Updated: 2024/09/09 17:20:09 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-void	*ft_calloc(size_t nmemb, size_t memsize)
-{
-	void	*mem;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
 
-	mem = malloc(nmemb * memsize);
-	if (!mem)
-		return (NULL);
-	ft_bzero(mem, nmemb * memsize);
-	return (mem);
-}
+/* `ulimit -n` on my system. Number of open files per process. */
+# define ULIMIT_N 1024
+
+/* For ssize_t and NULL*/
+# include <stddef.h>
+
+/* For write & read */
+# include <unistd.h>
+
+/* For malloc & free */
+# include <stdlib.h>
+
+/* libft. */
+# include "../libft.h"
+
+#endif

@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/06 13:53:42 by fmaurer           #+#    #+#              #
-#    Updated: 2024/08/06 19:28:19 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/09/09 17:15:37 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,8 +79,14 @@ SRCS_FTPR	=	ft_printf/ft_printf.c \
 						ft_printf/compl_convert_p_bonus.c \
 						ft_printf/compl_convert_x_bonus.c
 
+SRCS_GNL	=	get_next_line/get_next_line.c
+
 OBJS_DIR = objs
-OBJS	= $(patsubst %.c,$(OBJS_DIR)/%.o,$(SRCS_LIBFT)) $(patsubst ft_printf/%.c,$(OBJS_DIR)/%.o,$(SRCS_FTPR))
+
+OBJS	= $(patsubst %.c,$(OBJS_DIR)/%.o,$(SRCS_LIBFT)) 
+OBJS += $(patsubst ft_printf/%.c,$(OBJS_DIR)/%.o,$(SRCS_FTPR))
+OBJS += $(patsubst get_next_line/%.c,$(OBJS_DIR)/%.o,$(SRCS_GNL))
+
 CC = cc
 CC_FLAGS = -Wall -Wextra -Werror
 
@@ -102,6 +108,11 @@ $(OBJS_DIR)/%.o : %.c libft.h
 	@$(CC) $(CC_FLAGS) $(PIC) -c $< -o $@
 
 $(OBJS_DIR)/%.o : ft_printf/%.c libft.h
+	@mkdir -p $(OBJS_DIR)
+	@echo "Compiling: $<"
+	@$(CC) $(CC_FLAGS) $(PIC) -c $< -o $@
+
+$(OBJS_DIR)/%.o : get_next_line/%.c libft.h
 	@mkdir -p $(OBJS_DIR)
 	@echo "Compiling: $<"
 	@$(CC) $(CC_FLAGS) $(PIC) -c $< -o $@
