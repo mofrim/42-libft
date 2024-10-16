@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/06 13:53:42 by fmaurer           #+#    #+#              #
-#    Updated: 2024/09/09 17:15:37 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/10/16 20:22:38 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ SRCS_FTPR	=	ft_printf/ft_printf.c \
 
 SRCS_GNL	=	get_next_line/get_next_line.c
 
-OBJS_DIR = objs
+OBJS_DIR = obj
 
 OBJS	= $(patsubst %.c,$(OBJS_DIR)/%.o,$(SRCS_LIBFT)) 
 OBJS += $(patsubst ft_printf/%.c,$(OBJS_DIR)/%.o,$(SRCS_FTPR))

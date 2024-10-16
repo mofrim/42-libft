@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    Makefile.example                                   :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 11:37:05 by fmaurer           #+#    #+#              #
-#    Updated: 2024/08/06 06:45:08 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/10/16 20:28:35 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,21 +24,37 @@ PIC	=	-fPIC
 
 LIBFT_PATH	= ./libft
 LIBFT				= $(LIBFT_PATH)/libft.a
+LIB_PATHS		+= -L$(LIBFT_PATH)
+LIBS				+= -lft
 
 SRC = test.c
 
+# Makefile ricing :)
+GRN = \033[1;32m
+RED = \033[1;31m
+WHT = \033[1;37m
+EOC = \033[1;0m
+YLW = \033[1;33m
+MSGOPN = $(YLW)[[$(GRN)
+MSGEND = $(YLW)]]$(EOC)
+log_msg = $(MSGOPN) $(1) $(MSGEND)
+
 all: $(NAME)
 
-$(NAME): $(SRC)
-	make -C $(LIBFT_PATH) all
-	cc -o $(NAME) $< $(LIBFT)
+$(NAME): $(SRC) | $(LIBFT)
+	cc -o $(NAME) $< $(LIBS)
 
-clean: fclean
+$(LIBFT):
+	@echo -e "$(call log_msg,Compiling libft...)"
+	make -C $(LIBFT_PATH) all
+
+clean: 
+	@echo -e "$(call log_msg,Removing libft objs.)"
+	@make -s -C $(LIBFT_PATH) clean
 
 fclean:
+	@echo -e "$(call log_msg,fcleaning libft.)"
 	@make -s -C $(LIBFT_PATH) fclean
-	@echo "Removing $(NAME) binary..."
-	@rm -f $(NAME)
 
 re: fclean all
 
