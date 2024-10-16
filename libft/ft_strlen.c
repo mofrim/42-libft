@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 09:20:29 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/11 21:49:42 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/10/16 20:31:15 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_strlen(const char *s)
 {
 	const char	*p;
 
+	if (s == NULL)
+		return (0);
 	p = s;
 	while (*p)
 		p++;
