@@ -3,14 +3,12 @@
 
 int main(int ac, char **av)
 {
-	ft_printf("%042d, hello world\n", 42);
-	ft_printf("%s\n", ft_strdup("ataat"));
+	char	*str = "b";
+	char	*dst;
+	int		cnt;
 
-	char	*line;
-
-	int fd = open(av[1], O_RDONLY);
-	while ((line = get_next_line(fd)))
-		ft_printf("line: %s", line);
-
+	dst = ft_strcpy(str);
+	ft_printf("dst: %s\n", dst);
+	free(dst);
 	return (0);
 }
