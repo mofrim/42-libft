@@ -1,4 +1,4 @@
-libft/libft.a
-libft/obj/
+libft.a
+obj/
 tst
 core
