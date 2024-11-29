@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/06 13:53:42 by fmaurer           #+#    #+#              #
-#    Updated: 2024/10/30 22:02:41 by fmaurer          ###   ########.fr        #
+#    Updated: 2024/11/29 11:56:06 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS_LIBFT =  ft_isalpha.c \
 							ft_strchr.c \
 							ft_strrchr.c \
 							ft_strncmp.c \
+							ft_strcmp.c \
 							ft_memchr.c \
 							ft_memcmp.c \
 							ft_strnstr.c \
