@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 13:48:15 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/09/09 17:11:57 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/12/02 18:51:03 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ char	*ft_strdup(const char *str)
 	char	*dupl;
 	int		i;
 
+	if (!str)
+		return (NULL);
 	dupl = (char *)malloc((ft_strlen(str) + 1) * sizeof(char));
-	if (!dupl || !str)
+	if (!dupl)
 		return (NULL);
 	i = -1;
 	while (str[++i])
