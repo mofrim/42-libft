@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   compl_flag_utils_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 18:40:18 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/12/05 01:02:25 by fmaurer          ###   ########.fr       */
+/*   Created: 2024/07/11 20:17:08 by fmaurer           #+#    #+#             */
+/*   Updated: 2024/12/05 00:50:36 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <fcntl.h>
+#include "ft_fprintf.h"
 
-int	main(int ac, char **av)
+/* Initialize the t_flags struct with all zeros. */
+t_flags	*init_flags(void)
 {
-	char	*str;
-	char	*dst;
-	int		cnt;
-	int		fd;
+	t_flags	*flags;
 
-	str = "This is is so depressing.";
-	dst = ft_strcpy(str);
-	ft_printf("dst: %s\n", dst);
-	fd = open("./bla.txt", O_CREAT | O_TRUNC | O_WRONLY, S_IWUSR | S_IRUSR);
-	if (fd < -1)
-		return (2);
-	ft_fprintf(fd, "does this work ? av[0] = %s", av[0]);
-	close(fd);
-	free(dst);
-	return (0);
+	flags = (t_flags *) malloc(sizeof(t_flags));
+	if (!flags)
+		return (NULL);
+	flags->plus = 0;
+	flags->minus = 0;
+	flags->hash = 0;
+	flags->width = 0;
+	flags->dot = 0;
+	flags->prec = 0;
+	flags->zero = 0;
+	flags->space = 0;
+	return (flags);
 }
