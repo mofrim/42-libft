@@ -6,11 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:09:58 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/12/05 01:10:40 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/12/23 18:18:42 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_fprintf.h"
+#include "ft_dprintf.h"
 
 static void	get_prec_width(t_flags **fl, const char **fmt, int *conv_seq_len);
 
@@ -30,9 +30,9 @@ static void	get_zero(t_flags **fl, const char **fmt);
  * NOTE: I want to note, that due to my intense testing of format string
  * beforehand at the point we get to extracting prec to flags->prec it is
  * sure that there can only be the conv_char afterwards. this is already
- * enforced through ftfpr_compl_conv.
+ * enforced through ftdpr_compl_conv.
  */
-int	ftfpr_gather_flags_and_conv(va_list args, const char *fmt, int *output, \
+int	ftdpr_gather_flags_and_conv(va_list args, const char *fmt, int *output, \
 		int fd)
 {
 	t_flags	*flags;
@@ -42,14 +42,14 @@ int	ftfpr_gather_flags_and_conv(va_list args, const char *fmt, int *output, \
 	if (!flags)
 		return (-1);
 	conv_seq_len = 2;
-	while (ftfpr_isflagconv(*(++fmt)) != 1)
+	while (ftdpr_isflagconv(*(++fmt)) != 1)
 	{
 		get_pmshash(&flags, &fmt);
 		get_prec_width(&flags, &fmt, &conv_seq_len);
 		get_zero(&flags, &fmt);
 		conv_seq_len++;
 	}
-	*output += ftfpr_compl_do_conv(args, *fmt, flags, fd);
+	*output += ftdpr_compl_do_conv(args, *fmt, flags, fd);
 	free(flags);
 	return (conv_seq_len);
 }
@@ -84,7 +84,7 @@ static void	get_prec_width(t_flags **fl, const char **fmt, int *conv_seq_len)
 		(*fl)->zero = 0;
 		if (ft_isdigit(*(*fmt + 1)))
 		{
-			(*fl)->prec = ftfpr_atoi_overflow((*fmt + 1));
+			(*fl)->prec = ftdpr_atoi_overflow((*fmt + 1));
 			tmp = ft_itoa((*fl)->prec);
 			*conv_seq_len += ft_strlen(tmp);
 			(*fmt) += ft_strlen(tmp);
@@ -93,7 +93,7 @@ static void	get_prec_width(t_flags **fl, const char **fmt, int *conv_seq_len)
 	}
 	if (ft_isdigit(**fmt) && **fmt != '0' && !(*fl)->dot)
 	{
-		(*fl)->width = ftfpr_atoi_overflow(*fmt);
+		(*fl)->width = ftdpr_atoi_overflow(*fmt);
 		tmp = ft_itoa((*fl)->width);
 		*conv_seq_len += ft_strlen(tmp) - 1;
 		(*fmt) += ft_strlen(tmp) - 1;

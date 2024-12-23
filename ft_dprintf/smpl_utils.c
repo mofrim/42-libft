@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compl_flag_utils_bonus.c                           :+:      :+:    :+:   */
+/*   smpl_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/11 20:17:08 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/12/05 00:50:36 by fmaurer          ###   ########.fr       */
+/*   Created: 2024/06/21 09:39:47 by fmaurer           #+#    #+#             */
+/*   Updated: 2024/12/23 18:22:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_fprintf.h"
+#include "ft_dprintf.h"
 
-/* Initialize the t_flags struct with all zeros. */
-t_flags	*init_flags(void)
+/* Output one char to stdout. */
+void	ft_putchar(char c)
 {
-	t_flags	*flags;
+	ft_putchar_fd(c, 1);
+}
 
-	flags = (t_flags *) malloc(sizeof(t_flags));
-	if (!flags)
-		return (NULL);
-	flags->plus = 0;
-	flags->minus = 0;
-	flags->hash = 0;
-	flags->width = 0;
-	flags->dot = 0;
-	flags->prec = 0;
-	flags->zero = 0;
-	flags->space = 0;
-	return (flags);
+/* Output string to stdout. */
+void	ft_putstr(char *s)
+{
+	ft_putstr_fd(s, 1);
 }

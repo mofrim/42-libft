@@ -6,18 +6,18 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 11:03:27 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/12/05 01:14:52 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/12/23 18:22:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_fprintf.h"
+#include "ft_dprintf.h"
 
 static char	*hextoa_uint(unsigned int n, int upper);
 
 static int	hex_digits_uint(unsigned int n);
 
 /* Print smpl 'x' conversion. */
-int	ftfpr_converter_x(unsigned int i, int upper, int fd)
+int	ftdpr_converter_x(unsigned int i, int upper, int fd)
 {
 	char	*num;
 	int		r;

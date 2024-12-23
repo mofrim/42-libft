@@ -6,11 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 20:45:16 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/12/05 01:13:22 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/12/23 18:22:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_fprintf.h"
+#include "ft_dprintf.h"
 /*
  * Determine if we have a smpl, compl or no conv starting from *s.
  *
@@ -21,11 +21,11 @@
  * 	   -1	complex conversion
  *
  */
-int	ftfpr_is_conversion(const char *s)
+int	ftdpr_is_conversion(const char *s)
 {
-	if (ftfpr_smpl_isconv(s))
+	if (ftdpr_smpl_isconv(s))
 		return (1);
-	if (*s == '%' && ftfpr_compl_isconv(s) == 1)
+	if (*s == '%' && ftdpr_compl_isconv(s) == 1)
 		return (-1);
 	return (0);
 }
@@ -65,7 +65,7 @@ int	ftfpr_is_conversion(const char *s)
  * so the loop starts looking at the first char after the %
  *
  */
-int	ftfpr_compl_isconv(const char *s)
+int	ftdpr_compl_isconv(const char *s)
 {
 	int	num;
 	int	dot;
@@ -74,17 +74,17 @@ int	ftfpr_compl_isconv(const char *s)
 	dot = 0;
 	while (*(++s))
 	{
-		if (!ftfpr_isflagconv(*s))
+		if (!ftdpr_isflagconv(*s))
 			return (0);
-		if (ftfpr_isflagconv(*s) == 2 && *s != '0' && (num || dot))
+		if (ftdpr_isflagconv(*s) == 2 && *s != '0' && (num || dot))
 			return (0);
 		if (*s == '.' && dot)
 			return (0);
-		if (ftfpr_isflagconv(*s) == 1)
+		if (ftdpr_isflagconv(*s) == 1)
 			return (1);
 		if (ft_isdigit(*s) && !num && *s != '0')
 			num = 1;
-		if (ft_isdigit(*s) && *s != '0' && ftfpr_atoi_overflow(s) == -1)
+		if (ft_isdigit(*s) && *s != '0' && ftdpr_atoi_overflow(s) == -1)
 			return (-1);
 		if (*s == '.')
 			dot = 1;

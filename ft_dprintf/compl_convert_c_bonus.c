@@ -6,11 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/12/05 01:10:50 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/12/23 18:22:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_fprintf.h"
+#include "ft_dprintf.h"
 
 static int	print_right_padded(int c, t_flags *fl, int fd);
 
@@ -24,7 +24,7 @@ static int	print_left_padded(int c, t_flags *fl, int fd);
  *
  * @return Returns number of printed chars
  */
-int	ftfpr_compl_converter_c(int c, t_flags *fl, int fd)
+int	ftdpr_compl_converter_c(int c, t_flags *fl, int fd)
 {
 	int	r;
 

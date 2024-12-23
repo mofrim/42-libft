@@ -6,11 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 23:49:37 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/12/05 01:15:02 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/12/23 18:22:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_fprintf.h"
+#include "ft_dprintf.h"
 
 /* Counts and returns num of digits of unsigned int param. */
 static int	dec(unsigned int n)
@@ -29,7 +29,7 @@ static int	dec(unsigned int n)
 }
 
 /* Returns digit char string of param unsigned int. */
-char	*ftfpr_utoa(unsigned int n)
+char	*ftdpr_utoa(unsigned int n)
 {
 	char	*a;
 	int		i;

@@ -6,11 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/12/05 01:12:17 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/12/23 18:22:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_fprintf.h"
+#include "ft_dprintf.h"
 
 static int	print_left_padded(unsigned int d, t_flags *fl, int fd);
 
@@ -21,7 +21,7 @@ static int	print_prec(unsigned int d, t_flags *fl, int fd);
 static int	print_prec_width(unsigned int d, t_flags *fl, int nlen, int fd);
 
 /* Convert unsigned int with flags "-0 .". */
-int	ftfpr_compl_converter_u(unsigned int d, t_flags *fl, int fd)
+int	ftdpr_compl_converter_u(unsigned int d, t_flags *fl, int fd)
 {
 	int	r;
 
@@ -33,7 +33,7 @@ int	ftfpr_compl_converter_u(unsigned int d, t_flags *fl, int fd)
 	else if (fl->dot && (fl->prec >= fl->width))
 		r = print_prec(d, fl, fd);
 	else if (fl->dot && (fl->prec < fl->width))
-		r = print_prec_width(d, fl, ftfpr_uintstrlen(d), fd);
+		r = print_prec_width(d, fl, ftdpr_uintstrlen(d), fd);
 	return (r);
 }
 
@@ -44,7 +44,7 @@ static int	print_left_padded(unsigned int d, t_flags *fl, int fd)
 	int		i;
 	int		len;
 
-	numstr = ftfpr_utoa(d);
+	numstr = ftdpr_utoa(d);
 	len = ft_strlen(numstr);
 	i = -1;
 	i += fl->space;
@@ -67,7 +67,7 @@ static int	print_right_padded(unsigned int d, t_flags *fl, int fd)
 	int		i;
 	int		len;
 
-	numstr = ftfpr_utoa(d);
+	numstr = ftdpr_utoa(d);
 	len = ft_strlen(numstr);
 	i = -1;
 	if (fl->space)
@@ -92,7 +92,7 @@ static int	print_prec(unsigned int d, t_flags *fl, int fd)
 	int		i;
 	int		len;
 
-	numstr = ftfpr_utoa(d);
+	numstr = ftdpr_utoa(d);
 	len = ft_strlen(numstr);
 	i = -1;
 	if (!d && !fl->prec)

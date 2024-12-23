@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 13:53:29 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/12/05 00:51:58 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/12/23 18:12:34 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_list
 }	t_list;
 
 /* My ft_fprintf. */
-int		ft_fprintf(int fd, const char *f, ...);
+int		ft_dprintf(int fd, const char *f, ...);
 
 /* My ft_printf. */
 int		ft_printf(const char *f, ...);

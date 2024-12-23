@@ -6,11 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/12/05 01:11:29 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/12/23 18:22:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_fprintf.h"
+#include "ft_dprintf.h"
 
 static int	print_left_padded(char *s, t_flags *fl, int fd);
 
@@ -21,7 +21,7 @@ static int	print_prec(char *s, t_flags *fl, int fd);
 static int	print_prec_width(char *s, t_flags *fl, int fd);
 
 /* Convert string with flags "-." prec and width. */
-int	ftfpr_compl_converter_s(char *s, t_flags *fl, int fd)
+int	ftdpr_compl_converter_s(char *s, t_flags *fl, int fd)
 {
 	int	r;
 
@@ -33,7 +33,7 @@ int	ftfpr_compl_converter_s(char *s, t_flags *fl, int fd)
 	else if (fl->dot)
 		r = print_prec_width(s, fl, fd);
 	else
-		return (ftfpr_converter_s(s, fd));
+		return (ftdpr_converter_s(s, fd));
 	return (r);
 }
 
@@ -51,7 +51,7 @@ static int	print_left_padded(char *s, t_flags *fl, int fd)
 	if (fl->width > len)
 		while (++i < fl->width - len)
 			ft_putchar_fd(' ', fd);
-	ftfpr_converter_s(s, fd);
+	ftdpr_converter_s(s, fd);
 	if (fl->width >= len)
 		return (fl->width);
 	return (len);
@@ -68,7 +68,7 @@ static int	print_right_padded(char *s, t_flags *fl, int fd)
 	else
 		len = ft_strlen(s);
 	i = -1;
-	ftfpr_converter_s(s, fd);
+	ftdpr_converter_s(s, fd);
 	if (fl->width > len)
 		while (++i < fl->width - len)
 			ft_putchar_fd(' ', fd);
@@ -86,7 +86,7 @@ static int	print_prec(char *s, t_flags *fl, int fd)
 	if (!s)
 	{
 		if (fl->prec >= 6)
-			return (ftfpr_converter_s(s, fd));
+			return (ftdpr_converter_s(s, fd));
 		else
 			return (0);
 	}
@@ -97,7 +97,7 @@ static int	print_prec(char *s, t_flags *fl, int fd)
 		while (++i < fl->prec)
 			ft_putchar_fd(*s++, fd);
 	else
-		ftfpr_converter_s(s, fd);
+		ftdpr_converter_s(s, fd);
 	if (fl->prec < len)
 		return (fl->prec);
 	return (len);

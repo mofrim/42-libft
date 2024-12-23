@@ -6,17 +6,17 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 13:43:50 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/12/05 01:13:35 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/12/23 18:22:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_fprintf.h"
+#include "ft_dprintf.h"
 
 /*
  * Combined flag or conv char testing func.
  *
- * If you want to test for flagconvness f.ex. use `if(ftfpr_isflagconv(c))`. If
- * only convness of char c should be tested: if(ftfpr_isflagconv(c) == 1)...
+ * If you want to test for flagconvness f.ex. use `if(ftdpr_isflagconv(c))`. If
+ * only convness of char c should be tested: if(ftdpr_isflagconv(c) == 1)...
  * NOTE: well, actually not 100% clean code. having seperate functions would be
  * cleaner. but i choose compactness over cleanliness here.
  *
@@ -26,7 +26,7 @@
  * 			2	if c is a flag char
  * 			3	if c is a digit or dot
  */
-int	ftfpr_isflagconv(char c)
+int	ftdpr_isflagconv(char c)
 {
 	int	rval;
 
@@ -47,7 +47,7 @@ int	ftfpr_isflagconv(char c)
  * @return -1 if first char is no digit or if number represented by string is
  * bigger than INT_MAX. num in [0, INT_MAX] else.
  */
-int	ftfpr_atoi_overflow(const char *s)
+int	ftdpr_atoi_overflow(const char *s)
 {
 	long	num;
 
@@ -64,7 +64,7 @@ int	ftfpr_atoi_overflow(const char *s)
 }
 
 /* Return strlen of integer converted to ascii string. */
-int	ftfpr_intstrlen(int d)
+int	ftdpr_intstrlen(int d)
 {
 	char	*numstr;
 	int		ret;
@@ -78,12 +78,12 @@ int	ftfpr_intstrlen(int d)
 }
 
 /* Return strlen of unsigned integer converted to ascii string. */
-int	ftfpr_uintstrlen(unsigned int d)
+int	ftdpr_uintstrlen(unsigned int d)
 {
 	char	*numstr;
 	int		ret;
 
-	numstr = ftfpr_utoa(d);
+	numstr = ftdpr_utoa(d);
 	if (!numstr)
 		return (0);
 	ret = ft_strlen(numstr);
@@ -92,7 +92,7 @@ int	ftfpr_uintstrlen(unsigned int d)
 }
 
 /* Helper function for printing 0x in #-conversion. */
-void	ftfpr_print_zerox(int doit, int c, unsigned int num, int fd)
+void	ftdpr_print_zerox(int doit, int c, unsigned int num, int fd)
 {
 	if (!doit || !num)
 		return ;

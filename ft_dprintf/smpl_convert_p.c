@@ -6,16 +6,16 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 10:17:25 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/12/05 01:14:45 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/12/23 18:22:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_fprintf.h"
+#include "ft_dprintf.h"
 
 static char	*hextoa_prefix(unsigned long n);
 
 /* Outputs address of argument in printf format. */
-int	ftfpr_converter_p(unsigned long l, int fd)
+int	ftdpr_converter_p(unsigned long l, int fd)
 {
 	char	*num;
 	int		r;
@@ -37,12 +37,12 @@ static char	*hextoa_prefix(unsigned long n)
 
 	if (!n)
 		return (ft_strdup("(nil)"));
-	a = (char *)ft_calloc(ftfpr_hex_digits(n) + 3, sizeof(char));
+	a = (char *)ft_calloc(ftdpr_hex_digits(n) + 3, sizeof(char));
 	if (!a)
 		return (NULL);
 	if (!ft_memcpy(a, "0x", 2))
 		return (NULL);
-	i = ftfpr_hex_digits(n) + 2;
+	i = ftdpr_hex_digits(n) + 2;
 	while (--i >= 2)
 	{
 		if (n % 16 < 10)
@@ -55,7 +55,7 @@ static char	*hextoa_prefix(unsigned long n)
 }
 
 /* Calculate number of digits param would have in hex. */
-int	ftfpr_hex_digits(unsigned long n)
+int	ftdpr_hex_digits(unsigned long n)
 {
 	int	d;
 

@@ -6,11 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/12/05 01:11:04 by fmaurer          ###   ########.fr       */
+/*   Updated: 2024/12/23 18:22:49 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_fprintf.h"
+#include "ft_dprintf.h"
 
 static int	print_left_padded(int d, t_flags *fl, int fd);
 
@@ -21,7 +21,7 @@ static int	print_prec(int d, t_flags *fl, int fd);
 static int	print_prec_width(int d, t_flags *fl, int nlen, int fd);
 
 /* Convert integer with flags. */
-int	ftfpr_compl_converter_d(int d, t_flags *fl, int fd)
+int	ftdpr_compl_converter_d(int d, t_flags *fl, int fd)
 {
 	int	r;
 
@@ -34,7 +34,7 @@ int	ftfpr_compl_converter_d(int d, t_flags *fl, int fd)
 	else if (fl->dot && (fl->prec >= fl->width))
 		r = print_prec(d, fl, fd);
 	else if (fl->dot && (fl->prec < fl->width))
-		r = print_prec_width(d, fl, ftfpr_intstrlen(d), fd);
+		r = print_prec_width(d, fl, ftdpr_intstrlen(d), fd);
 	return (r);
 }
 
