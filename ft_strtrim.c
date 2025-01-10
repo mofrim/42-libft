@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:29:04 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/18 09:17:21 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/01/10 14:30:55 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,20 @@ static size_t	fdrtrim(const char *s, const char *set)
 	return (len - i);
 }
 
-// Parameters
-// 		s: The string to be trimmed.
-// 		set: The reference set of characters to trim.
-// Return value
-// 		The trimmed string.
-// 		NULL if the allocation fails.
-// External functs.
-// 		malloc
-// Description
-// 		Allocates (with malloc(3)) and returns a copy of
-// 		’s1’ with the characters specified in ’set’ removed
-// 		from the beginning and the end of the string.
+/**
+ * Trim from the end of string s any char from set.
+ *
+ * Allocates (with malloc(3)) and returns a copy of
+ * ’s1’ with the characters specified in ’set’ removed
+ * from the beginning and the end of the string.
+ *
+ * @param	s	The string to be trimmed.
+ * @param	set	The reference set of characters to trim.
+ * @return	The trimmed string or NULL if something goes wrong.
+ *
+ * @example
+ * 	ft_strtrim("42 School\n", "\n");
+ */
 char	*ft_strtrim(char const *s, char const *set)
 {
 	char		*tri;
@@ -86,6 +88,5 @@ char	*ft_strtrim(char const *s, char const *set)
 	i = -1;
 	while (++i <= end - start)
 		tri[i] = s[start + i];
-	tri[++i] = '\0';
 	return (tri);
 }
