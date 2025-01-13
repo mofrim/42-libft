@@ -6,12 +6,14 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 11:22:09 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/09/09 17:13:58 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/01/13 14:04:59 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/* Allocate nmemb memsize'd blocks.
+ * Example: ft_calloc(12, sizeof(int)); */
 void	*ft_calloc(size_t nmemb, size_t memsize)
 {
 	void	*mem;
