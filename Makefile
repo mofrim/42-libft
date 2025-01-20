@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/06 13:53:42 by fmaurer           #+#    #+#              #
-#    Updated: 2024/12/23 18:26:51 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/01/20 15:08:13 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,6 +118,12 @@ CC_FLAGS = -Wall -Wextra -Werror
 # https://stackoverflow.com/questions/5311515/gcc-fpic-option
 PIC	=	-fPIC
 
+
+# debugging flags for more verbosity on memory corruption issues and debugging
+# in general.
+DEBUG_FLAGS = -fsanitize=address -fno-omit-frame-pointer -g
+DEBUG_OBJS = $(OBJS:.o=.debug.o)
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
@@ -144,6 +150,32 @@ $(OBJS_DIR)/%.o : get_next_line/%.c libft.h
 	@echo "Compiling: $<"
 	@$(CC) $(CC_FLAGS) $(PIC) -c $< -o $@
 
+# debugging targets:
+debug: CC_FLAGS += $(DEBUG_FLAGS)
+debug: $(DEBUG_OBJS)
+	@echo -e "\nArchiving debug version:\n($^) --> libft.a\n"
+	@ar -rcs $(NAME) $(DEBUG_OBJS)
+
+$(OBJS_DIR)/%.debug.o : %.c libft.h
+	@mkdir -p $(OBJS_DIR)
+	@echo "Compiling debug: $<"
+	@$(CC) $(CC_FLAGS) $(PIC) -c $< -o $@
+
+$(OBJS_DIR)/%.debug.o : ft_printf/%.c libft.h
+	@mkdir -p $(OBJS_DIR)
+	@echo "Compiling debug: $<"
+	@$(CC) $(CC_FLAGS) $(PIC) -c $< -o $@
+
+$(OBJS_DIR)/ftdprntf-%.debug.o : ft_dprintf/%.c libft.h
+	@mkdir -p $(OBJS_DIR)
+	@echo "Compiling debug: $<"
+	@$(CC) $(CC_FLAGS) $(PIC) -c $< -o $@
+
+$(OBJS_DIR)/%.debug.o : get_next_line/%.c libft.h
+	@mkdir -p $(OBJS_DIR)
+	@echo "Compiling debug: $<"
+	@$(CC) $(CC_FLAGS) $(PIC) -c $< -o $@
+
 clean:
 	@echo "Removing objs..."
 	rm -rf $(OBJS_DIR)
@@ -154,4 +186,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: clean fclean re all
+.PHONY: clean fclean re all debug
