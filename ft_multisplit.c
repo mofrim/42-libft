@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 18:14:06 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/01/21 00:40:13 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/01/21 00:50:54 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	numofsplits(const char *s, char *splitchars)
 
 /* free all subarrays helper function in case subarray allocation goes wrong.
  * tbh: seems a bit optional to me. how to fail malloc? */
-void	*free2stars(char **arr, int k)
+static void	*free2stars(char **arr, int k)
 {
 	int	i;
 
