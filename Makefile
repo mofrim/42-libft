@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/06 13:53:42 by fmaurer           #+#    #+#              #
-#    Updated: 2025/01/21 00:37:39 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/03/14 17:24:34 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,9 @@ SRCS_LIBFT =  ft_isalpha.c \
 							ft_lstclear.c \
 							ft_lstdelone.c \
 							ft_lstiter.c \
-							ft_lstmap.c
+							ft_lstmap.c \
+							ft_strndup.c \
+							ft_isspace.c
 
 SRCS_FTPR	=	ft_printf/ft_printf.c \
 						ft_printf/smpl_utils.c \

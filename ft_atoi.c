@@ -6,17 +6,11 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 07:44:49 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/06/13 11:20:59 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/03/14 17:22:23 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	ft_isspace(char c)
-{
-	return (c == '\f' || c == '\n' || c == '\r' || c == '\t'
-		|| c == ' ' || c == '\v');
-}
 
 /* Convert ascii string to integer. A *single* minus or plus is counted.
  * Everything else afterwards which is not a digit will be considered garbage
