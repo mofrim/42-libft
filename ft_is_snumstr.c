@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_sgn_numstr.c                                 :+:      :+:    :+:   */
+/*   ft_is_snumstr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 12:45:45 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/04/22 12:49:14 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/04/22 22:14:34 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ bool	ft_is_snumstr(char *s)
 		while (s[++i])
 			if (!ft_isdigit(s[i]))
 				return (false);
-	return (true);
+	if (!s[i])
+		return (true);
+	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 12:49:48 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/04/22 19:00:19 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/04/22 22:14:40 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ bool	ft_is_unumstr(char	*s)
 	i = 0;
 	while (ft_isdigit(s[i]))
 		i++;
-	if (!ft_isdigit(s[i]) && s[i] != '.')
-		return (false);
 	if (s[i] == '.' && (!s[i + 1] || i == 0))
 		return (false);
 	if (s[i] == '.' && s[i + 1])
 		while (s[++i])
 			if (!ft_isdigit(s[i]))
 				return (false);
-	return (true);
+	if (!s[i])
+		return (true);
+	return (false);
 }

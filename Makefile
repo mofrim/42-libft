@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/06 13:53:42 by fmaurer           #+#    #+#              #
-#    Updated: 2025/04/22 13:18:22 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/04/22 21:10:49 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,7 +112,7 @@ SRCS_GNL	=	get_next_line/get_next_line.c
 
 OBJS_DIR = obj
 
-OBJS	= $(patsubst %.c,$(OBJS_DIR)/%.o,$(SRCS_LIBFT)) 
+OBJS	= $(patsubst %.c,$(OBJS_DIR)/%.o,$(SRCS_LIBFT))
 OBJS += $(patsubst ft_printf/%.c,$(OBJS_DIR)/%.o,$(SRCS_FTPR))
 OBJS += $(patsubst ft_dprintf/%.c,$(OBJS_DIR)/ftdprntf-%.o,$(SRCS_FTDPR))
 OBJS += $(patsubst get_next_line/%.c,$(OBJS_DIR)/%.o,$(SRCS_GNL))
