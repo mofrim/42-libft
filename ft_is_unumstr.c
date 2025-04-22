@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 12:49:48 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/04/22 13:16:07 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/04/22 19:00:19 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 /* Check if numstr is a valid floating point or integer number without any
  * leading +/- signs. '.0' or '12.' strings return false! */
-bool	ft_is_usgn_numstr(char	*s)
+bool	ft_is_unumstr(char	*s)
 {
 	size_t	i;
 
+	if (!s || (s && !*s))
+		return (false);
 	i = 0;
 	while (ft_isdigit(s[i]))
 		i++;
