@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/06 13:53:42 by fmaurer           #+#    #+#              #
-#    Updated: 2025/03/14 17:24:34 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/04/22 11:10:05 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,9 @@ SRCS_LIBFT =  ft_isalpha.c \
 							ft_strjoin.c \
 							ft_strtrim.c \
 							ft_split.c \
+							_ft_multisplit.c \
 							ft_multisplit.c \
+							ft_freesplit.c \
 							ft_itoa.c \
 							ft_strmapi.c \
 							ft_striteri.c \
