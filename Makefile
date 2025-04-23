@@ -6,7 +6,7 @@
 #    By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/06 13:53:42 by fmaurer           #+#    #+#              #
-#    Updated: 2025/04/22 21:10:49 by fmaurer          ###   ########.fr        #
+#    Updated: 2025/04/23 00:37:02 by fmaurer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS_LIBFT =  ft_isalpha.c \
 							ft_isprint.c \
 							ft_is_unumstr.c \
 							ft_is_snumstr.c \
+							ft_is_uinumstr.c \
 							ft_strlen.c \
 							ft_memset.c \
 							ft_bzero.c \

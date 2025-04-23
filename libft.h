@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 13:53:29 by fmaurer           #+#    #+#             */
-/*   Updated: 2025/04/22 13:17:50 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/04/23 00:34:36 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 bool	ft_is_snumstr(char *s);
 bool	ft_is_unumstr(char *s);
+bool	ft_is_uinumstr(char *s);
 size_t	ft_strlen(const char *s);
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
