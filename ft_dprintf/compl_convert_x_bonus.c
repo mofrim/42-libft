@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/12/23 18:22:49 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/05/26 07:53:21 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,8 @@ static int	print_prec_width(unsigned int i, t_flags *fl, int c, int fd)
 	if (!fl->minus)
 	{
 		while (++k < fl->width - (fl->prec + (i != 0) * fl->hash * 2) \
-				* (fl->prec >= len) - (len + (i != 0) * fl->hash * 2) \
-				* (fl->prec < len))
+* (fl->prec >= len) - (len + (i != 0) * fl->hash * 2) \
+* (fl->prec < len))
 			ft_putchar_fd(' ', fd);
 		ftdpr_print_zerox(fl->hash, c, i, fd);
 		r = print_prec(i, fl, c, fd) + k;

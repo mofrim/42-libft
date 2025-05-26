@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:09:58 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/12/23 18:18:42 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/05/26 08:01:35 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	get_zero(t_flags **fl, const char **fmt);
  * sure that there can only be the conv_char afterwards. this is already
  * enforced through ftdpr_compl_conv.
  */
-int	ftdpr_gather_flags_and_conv(va_list args, const char *fmt, int *output, \
+int	ftdpr_gather_flags_and_conv(va_list args, const char *fmt, int *output,
 		int fd)
 {
 	t_flags	*flags;

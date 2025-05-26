@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:52:03 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/08/05 20:38:51 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/05/26 07:58:03 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 int	ftpr_smpl_isconv(const char *s)
 {
 	if (!ft_strncmp(s, "%c", 2) || !ft_strncmp(s, "%s", 2) || \
-		!ft_strncmp(s, "%p", 2) || !ft_strncmp(s, "%d", 2) || \
-		!ft_strncmp(s, "%i", 2) || !ft_strncmp(s, "%u", 2) || \
-		!ft_strncmp(s, "%x", 2) || !ft_strncmp(s, "%X", 2) || \
-		!ft_strncmp(s, "%%", 2))
+!ft_strncmp(s, "%p", 2) || !ft_strncmp(s, "%d", 2) || \
+!ft_strncmp(s, "%i", 2) || !ft_strncmp(s, "%u", 2) || \
+!ft_strncmp(s, "%x", 2) || !ft_strncmp(s, "%X", 2) || \
+!ft_strncmp(s, "%%", 2))
 		return (1);
 	return (0);
 }

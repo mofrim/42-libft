@@ -6,7 +6,7 @@
 /*   By: fmaurer <fmaurer42@posteo.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:55:54 by fmaurer           #+#    #+#             */
-/*   Updated: 2024/12/23 18:22:49 by fmaurer          ###   ########.fr       */
+/*   Updated: 2025/05/26 08:00:08 by fmaurer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ftdpr_compl_converter_d(int d, t_flags *fl, int fd)
 
 	r = 0;
 	if (!fl->minus && !fl->dot && (fl->zero || fl->plus || fl->space \
-		|| fl->width))
+|| fl->width))
 		r = print_left_padded(d, fl, fd);
 	else if (fl->minus && !fl->dot)
 		r = print_right_padded(d, fl, fd);
